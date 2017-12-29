@@ -6,7 +6,7 @@ import 'moment/locale/es';
 import './index.css';
 
 import MonthArray from './utils/create-month-array/MonthArray';
-import EventCalendar from './components/event-calendar/EventCalendar';
+import { EventCalendar } from './components';
 
 moment.locale('es');
 

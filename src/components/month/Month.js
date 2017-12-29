@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import Week from '../week/Week'
+import { Week } from '../index';
 
 export default class Month extends PureComponent {
     render() {
