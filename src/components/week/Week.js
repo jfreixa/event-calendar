@@ -1,4 +1,6 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+
 import Day from '../day/Day';
 
 export default class Week extends PureComponent {
@@ -9,4 +11,8 @@ export default class Week extends PureComponent {
             </div>
         );
     }
+}
+
+Week.propTypes = {
+    days: PropTypes.array.isRequired
 }
