@@ -1,21 +1,23 @@
-import { PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+
+import Month from '../month/Month'
 
 export default class EventCalendar extends PureComponent{
     render() {
-        const { events, days } = this.props;
-        console.log(events, days);
-        return 'Event calendar';
+        const { events, weeks } = this.props;
+        console.log(events, weeks);
+        return <Month weeks={weeks} />;
     }
 }
 
 EventCalendar.propTypes = {
     events: PropTypes.array,
-    days: PropTypes.arrayOf(
+    weeks: PropTypes.arrayOf(
         PropTypes.arrayOf(
             PropTypes.shape({
                 actualMonth: PropTypes.bool,
-                day: PropTypes.number
+                number: PropTypes.number
             })
         )
     ).isRequired
