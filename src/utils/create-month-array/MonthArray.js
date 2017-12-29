@@ -11,13 +11,18 @@ export default class MonthArray {
 
         let iterateDate = moment(first).subtract(1, 'days');
         let monthArray = [];
+        let weekArray = [];
 
         do {
             iterateDate.add(1, 'day');
-            monthArray.push({
+            weekArray.push({
                 day: iterateDate.date(),
                 actualMonth: iterateDate.month() === momentMonth
-            })
+            });
+            if (weekArray.length === 7) {
+                monthArray.push(weekArray);
+                weekArray = [];
+            }
         } while (!iterateDate.isSame(last, 'day'));
 
         return monthArray;
