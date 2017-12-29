@@ -1,6 +1,4 @@
 import moment from 'moment';
-import 'moment/locale/es';
-moment.locale('es')
 
 export default class MonthArray {
     create(month, year) {
@@ -16,7 +14,7 @@ export default class MonthArray {
         do {
             iterateDate.add(1, 'day');
             weekArray.push({
-                day: iterateDate.date(),
+                number: iterateDate.date(),
                 actualMonth: iterateDate.month() === momentMonth
             });
             if (weekArray.length === 7) {
