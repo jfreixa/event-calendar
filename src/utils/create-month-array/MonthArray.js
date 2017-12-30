@@ -1,28 +1,26 @@
-import moment from 'moment';
+import Moment from 'moment';
+import { extendMoment } from 'moment-range';
+
+const moment = extendMoment(Moment);
 
 export default class MonthArray {
     create(month, year) {
         let momentMonth = month - 1;
         const date = moment().month(momentMonth).year(year);
-        const first = moment(date).startOf('month').startOf('week');
-        const last = moment(date).endOf('month').endOf('week');
+        const start = moment(date).startOf('month').startOf('week');
+        const end = moment(date).endOf('month').endOf('week');
 
-        let iterateDate = moment(first).subtract(1, 'days');
-        let monthArray = [];
-        let weekArray = [];
-
-        do {
-            iterateDate.add(1, 'day');
-            weekArray.push({
-                number: iterateDate.date(),
-                actualMonth: iterateDate.month() === momentMonth
+        const range = moment.range(start, end);
+        const days = Array.from(range.by('day'))
+            .map(moment => {
+                return {
+                    number: moment.date(),
+                    actualMonth: moment.month() === momentMonth
+                }
             });
-            if (weekArray.length === 7) {
-                monthArray.push(weekArray);
-                weekArray = [];
-            }
-        } while (!iterateDate.isSame(last, 'day'));
 
-        return monthArray;
+        return days.reduce((rows, key, index) => (
+            index % 7 === 0 ? rows.push([key]) : rows[rows.length - 1].push(key)
+        ) && rows, []);
     }
 }
