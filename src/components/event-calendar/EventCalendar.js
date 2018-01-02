@@ -5,12 +5,10 @@ import { Header, Month } from '../index'
 
 export default class EventCalendar extends PureComponent {
     render() {
-        const { events, weeks } = this.props;
-        console.log(events, weeks);
-        // Header >> WeekDayName
+        const { weeks, weekDays } = this.props;
         return (
             <Fragment>
-                <Header weekDays={['DL', 'DM', 'DM', 'DJ', 'DV', 'DS', 'DM']} />
+                <Header weekDays={weekDays} />
                 <Month weeks={weeks} />
             </Fragment>
         );
@@ -18,8 +16,8 @@ export default class EventCalendar extends PureComponent {
 }
 
 EventCalendar.propTypes = {
-    events: PropTypes.array,
-    weeks: PropTypes.array.isRequired
+    weeks: PropTypes.array.isRequired,
+    weekDays: PropTypes.array.isRequired
 }
 
 EventCalendar.defaultProps = {
