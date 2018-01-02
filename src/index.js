@@ -5,14 +5,12 @@ import 'moment/locale/es';
 
 import './index.css';
 
-import MonthArray from './utils/create-month-array/MonthArray';
+import { createWeeks } from './utils';
 import { EventCalendar } from './components';
 
 moment.locale('es');
 
-const monthArray = new MonthArray();
-
 ReactDOM.render(
-    <EventCalendar weeks={monthArray.create(12, 2017)} />,
+    <EventCalendar weeks={createWeeks(12, 2017)} />,
     document.getElementById('root')
 );

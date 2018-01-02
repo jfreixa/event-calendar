@@ -1,14 +1,10 @@
-import MonthArray from './MonthArray';
+import createWeeks from './createWeeks';
 import moment from 'moment';
 import 'moment/locale/es';
 
 moment.locale('es');
 
 describe('Should create the correct arrays', () => {
-    let monthArray;
-    beforeAll(() => {
-        monthArray = new MonthArray();
-    });
     test('Last day of the month is Sunday', () => {
         let december2017 = [
             [
@@ -57,7 +53,7 @@ describe('Should create the correct arrays', () => {
                 { "actualMonth": true, "number": 31 }
             ]
         ];
-        expect(monthArray.create(12, 2017)).toEqual(december2017);
+        expect(createWeeks(12, 2017)).toEqual(december2017);
     });
 
     test('First day of the month is Monday', () => {
@@ -108,7 +104,7 @@ describe('Should create the correct arrays', () => {
                 { "actualMonth": false, "number": 4 }
             ]
         ];
-        expect(monthArray.create(5, 2017)).toEqual(may2017);
+        expect(createWeeks(5, 2017)).toEqual(may2017);
     });
 
     test('Leap year on February', () => {
@@ -159,17 +155,17 @@ describe('Should create the correct arrays', () => {
                 { "actualMonth": false, "number": 6 }
             ]
         ];
-        expect(monthArray.create(2, 2016)).toEqual(february2016);
+        expect(createWeeks(2, 2016)).toEqual(february2016);
     });
 
     test('Actual month property in previous month is false', () => {
-        let february2015 = monthArray.create(2, 2015);
+        let february2015 = createWeeks(2, 2015);
         const firstDay = february2015[0];
         expect(firstDay.actualMonth).toBeFalsy();
     });
 
     test('Actual month property in next month is false', () => {
-        const february2015 = monthArray.create(2, 2015);
+        const february2015 = createWeeks(2, 2015);
         const lastDay = february2015[february2015.length - 1]
         expect(lastDay.actualMonth).toBeFalsy();
     });
