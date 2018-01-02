@@ -3,9 +3,14 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-    display: inline-block;
-    text-align: center;
-    width: 1.5em;
+    cursor: default;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    font-weight: 500;
+    color: #646464;
+    text-transform: uppercase;
+    margin: 1px;
 `;
 
 export default class WeekDayName extends PureComponent {
