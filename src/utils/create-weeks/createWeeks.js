@@ -3,7 +3,7 @@ import { extendMoment } from 'moment-range';
 
 const moment = extendMoment(Moment);
 
-export default function createWeeks (month, year) {
+export default function createWeeks (month, year, actualDay) {
     let momentMonth = month - 1;
 
     const date = moment().month(momentMonth).year(year);
@@ -16,7 +16,7 @@ export default function createWeeks (month, year) {
             return {
                 number: day.date(),
                 actualMonth: day.month() === momentMonth,
-                actualDay: day.isSame(moment(), 'day')
+                actualDay: day.isSame(moment(actualDay, "DD-MM-YYYY"), 'day')
             }
         });
 

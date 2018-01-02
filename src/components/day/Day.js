@@ -12,21 +12,19 @@ const Wrapper = styled.div`
     margin: 1px;
     text-align: center;
     color: ${props => props.actualMonth ? '#000' : '#646464'};
-    ${props => {
-        if(props.actualDay) {
-            return `
-                background-color: #ff7c22;
-                color: #fff;
-                border-radius: 3px;
-            `;
-        }
-    }}
+    ${props => (
+        props.actualDay
+        && `
+            background-color: #ff7c22;
+            color: #fff;
+            border-radius: 3px;
+        `
+    )}
 `;
 
 export default class Day extends PureComponent {
     render() {
         const { actualMonth, actualDay, number } = this.props
-        console.log(this.props)
         return (
             <Wrapper
                 actualMonth={actualMonth}

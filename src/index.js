@@ -12,7 +12,7 @@ moment.locale('es');
 
 ReactDOM.render(
     <EventCalendar
-        weeks={createWeeks(1, 2018)}
+        weeks={createWeeks(1, 2018, moment().format('DD-MM-YYYY'))}
         weekDays={createWeekDays()}
     />,
     document.getElementById('root')
