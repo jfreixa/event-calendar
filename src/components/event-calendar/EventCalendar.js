@@ -6,6 +6,7 @@ import { Header, Month } from '../index'
 export default class EventCalendar extends PureComponent {
     render() {
         const { weeks, weekDays } = this.props;
+        
         return (
             <Fragment>
                 <Header weekDays={weekDays} />
