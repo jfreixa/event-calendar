@@ -5,7 +5,7 @@ import 'moment/locale/es';
 
 import './index.css';
 
-import { createWeeks, createWeekDays } from './utils';
+import { createWeeks, createWeekDays, mergeWeekDaysWithEvents } from './utils';
 import { EventCalendar } from './components';
 
 moment.locale('es');
@@ -17,17 +17,7 @@ let apiEvents = [
 
 let weeks = createWeeks(1, 2018, moment().format('DD-MM-YYYY'));
 
-weeks = weeks.map(week => week.map(day => {
-    if (!day.actualMonth) {
-        return day;
-    }
-    let event = apiEvents.find(event => event.day === day.number);
-    return event ? { 
-        ...day,
-        assisted: event.assisted,
-        missed: event.missed
-    } : day; 
-}));
+weeks = mergeWeekDaysWithEvents(weeks, apiEvents);
 
 ReactDOM.render(
     <EventCalendar
