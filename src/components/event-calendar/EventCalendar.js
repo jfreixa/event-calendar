@@ -20,7 +20,3 @@ EventCalendar.propTypes = {
     weeks: PropTypes.array.isRequired,
     weekDays: PropTypes.array.isRequired
 }
-
-EventCalendar.defaultProps = {
-    events: []
-};
