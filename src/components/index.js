@@ -4,6 +4,7 @@ import Month from './month/Month';
 import Week from './week/Week';
 import Header from './header/Header';
 import WeekDayName from './week-day-name/WeekDayName'
+import Controller from './controller/Controller'
 
 export {
     Day,
@@ -11,5 +12,6 @@ export {
     Month,
     Week,
     Header,
-    WeekDayName
+    WeekDayName,
+    Controller
 }
