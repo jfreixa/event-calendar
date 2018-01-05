@@ -53,7 +53,7 @@ describe('Should create the correct arrays', () => {
                 { "actualDay": false, "actualMonth": true, "number": 31 }
             ]
         ];
-        expect(createWeeks(12, 2017, "01-01-2000")).toEqual(december2017);
+        expect(createWeeks(11, 2017, "01-01-2000")).toEqual(december2017);
     });
 
     test('First day of the month is Monday', () => {
@@ -104,7 +104,7 @@ describe('Should create the correct arrays', () => {
                 { "actualDay": false, "actualMonth": false, "number": 4 }
             ]
         ];
-        expect(createWeeks(5, 2017, "01-01-2000")).toEqual(may2017);
+        expect(createWeeks(4, 2017, "01-01-2000")).toEqual(may2017);
     });
 
     test('Leap year on February', () => {
@@ -155,23 +155,23 @@ describe('Should create the correct arrays', () => {
                 { "actualDay": false, "actualMonth": false, "number": 6 }
             ]
         ];
-        expect(createWeeks(2, 2016, "01-01-2000")).toEqual(february2016);
+        expect(createWeeks(1, 2016, "01-01-2000")).toEqual(february2016);
     });
 
     test('Actual month property in previous month is false', () => {
-        let february2015 = createWeeks(2, 2015, "01-01-2000");
+        let february2015 = createWeeks(1, 2015, "01-01-2000");
         const firstDay = february2015[0];
         expect(firstDay.actualMonth).toBeFalsy();
     });
 
     test('Actual month property in next month is false', () => {
-        const february2015 = createWeeks(2, 2015, "01-01-2000");
+        const february2015 = createWeeks(1, 2015, "01-01-2000");
         const lastDay = february2015[february2015.length - 1]
         expect(lastDay.actualMonth).toBeFalsy();
     });
 
     test('Actual day is correctly setted', () => {
-        const january2018 = createWeeks(1, 2018, "01-01-2018");
+        const january2018 = createWeeks(0, 2018, "01-01-2018");
         const today = january2018
             .reduce((days, week) => days.concat(week), [])
             .find(day => day.number === 1);
@@ -179,7 +179,7 @@ describe('Should create the correct arrays', () => {
     });
 
     test('Actual day is not in the current month', () => {
-        const january2018 = createWeeks(1, 2018, "01-01-2019");
+        const january2018 = createWeeks(0, 2018, "01-01-2019");
         const noActualDay = january2018
             .reduce((days, week) => days.concat(week), [])
             .some(day => day.actualDay === true);

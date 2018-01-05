@@ -4,9 +4,7 @@ import { extendMoment } from 'moment-range';
 const moment = extendMoment(Moment);
 
 export default function createWeeks (month, year, actualDay) {
-    let momentMonth = month - 1;
-
-    const date = moment().month(momentMonth).year(year);
+    const date = moment().month(month).year(year);
     const start = moment(date).startOf('month').startOf('week');
     const end = moment(date).endOf('month').endOf('week');
 
@@ -15,7 +13,7 @@ export default function createWeeks (month, year, actualDay) {
         .map(day => {
             return {
                 number: day.date(),
-                actualMonth: day.month() === momentMonth,
+                actualMonth: day.month() === month,
                 actualDay: day.isSame(moment(actualDay, "DD-MM-YYYY"), 'day')
             }
         });
