@@ -13,7 +13,7 @@ const apiEvents = [
 ];
 
 
-export default class Calendar extends Component {
+export default class EventCalendarContainer extends Component {
     constructor(...args) {
         super(...args);
         this.state = {
@@ -57,4 +57,4 @@ export default class Calendar extends Component {
     }
 }
 
-Calendar.propTypes = {}
+EventCalendarContainer.propTypes = {}
