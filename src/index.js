@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import { EventCalendarContainer } from './containers';
 
 ReactDOM.render(
-    <EventCalendarContainer />,
+    <EventCalendarContainer
+        language='ca'
+    />,
     document.getElementById('root')
 );

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import 'moment/locale/es';
+import 'moment/locale/ca';
 
 import { createWeeks, createWeekDays, mergeWeekDaysWithEvents } from '../../utils';
 import { EventCalendar } from '../../components';
-
-moment.locale('en');
 
 const apiEvents = [
     {day: 2, assisted: ["Gym", "Run"], missed: []},
@@ -16,11 +16,11 @@ const apiEvents = [
 export default class EventCalendarContainer extends Component {
     constructor(...args) {
         super(...args);
+        moment.locale(this.props.language);        
         this.state = {
             date: moment()
         };
     }
-
     getWeeks() {
         const month = this.state.date.month();
         const year = this.state.date.year();
@@ -44,7 +44,7 @@ export default class EventCalendarContainer extends Component {
         return this.state.date.format('MMMM YYYY');
     }
 
-    render() {
+    render() {       
         return (
             <EventCalendar
                 title={this.getNameTitle()}
@@ -57,4 +57,10 @@ export default class EventCalendarContainer extends Component {
     }
 }
 
-EventCalendarContainer.propTypes = {}
+EventCalendarContainer.propTypes = {
+    language: PropTypes.string
+}
+
+EventCalendarContainer.defaultProps = {
+    language: 'en'
+}
