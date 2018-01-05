@@ -12,13 +12,13 @@ const apiEvents = [
     {day: 8, assisted: [], missed: ["Gym", "Run"]}    
 ];
 
-
 export default class EventCalendarContainer extends Component {
     constructor(...args) {
         super(...args);
         moment.locale(this.props.language);        
         this.state = {
-            date: moment()
+            date: moment(),
+            weekDays: createWeekDays()
         };
     }
     getWeeks() {
@@ -49,7 +49,7 @@ export default class EventCalendarContainer extends Component {
             <EventCalendar
                 title={this.getNameTitle()}
                 weeks={this.getWeeks()}
-                weekDays={createWeekDays()}
+                weekDays={this.state.weekDays}
                 nextMonth={this.handleNext}
                 previousMonth={this.handlePrevious}
             />
